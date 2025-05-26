@@ -22,11 +22,14 @@ function validarFormulario() {
             edad: vEdad
         }
         let personas = personas.push(persona)
-        console.log(persona)
+        
         return
     }
 
 }
+
+console.log(persona)
+mostrarDatos()
 
 function validarNombre() {
 
@@ -40,6 +43,10 @@ function actualizarMiFormulario() {
 function eliminar() {
 
 }
+
+function mostrarDatos() {
+
+}
 //validar edad: Debe ser mayor o igual a 18 y menor a 100
 
 
@@ -50,6 +57,9 @@ function validarEdad() {
     } if (vEdad < 0) {
         alert("Edad invalida")
         return
-    } else (vEdad != 0)
+    } if (vEdad > 120){
+        alert("Edad fuera de rango")
+        return
+    } else{console.log("Exito!")}
 
 }
