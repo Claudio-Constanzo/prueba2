@@ -63,15 +63,19 @@ function cargarDatos() {
     console.log("Datos cargados correctamente");
 }
 
-function actualizarMiFormulario() { 
+function actualizarMiFormulario(indice) { 
     let eNombre = document.getElementById('nombre')
     let eEdad = document.getElementById('edad')
-    eNombre.value = ''
-    eEdad.value = ''
-    errorNombre.innerHTML = ''
-    errorEdad.innerHTML = ''
-    console.log("Formulario actualizado")
-
+    let persona = personas.filter((persona,index) => {
+        if(indice == index) {
+            return persona
+        }
+})
+    console.log(persona)
+    eNombre.value = persona[0].nombre
+    eEdad.value = persona[0].edad
+    let btnActualizar = document.getElementById('btnActualizar')
+    btnActualizar.value = indice
 }
 
 function eliminar() {
