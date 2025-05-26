@@ -39,7 +39,8 @@ function validarNombre(value,error) {
         error.innerHTML = "Por favor ingresar un nombre valido"
         return false
     } else if (!/^[a-zA-Z\s]+$/.test(value)) {
-        error.innerHTML = "El nombre solo debe contener letras"
+        alert("El nombre solo debe contener letras!")
+        // error.innerHTML = "<b>ERROR:</b> El nombre solo debe contener letras!"
         return false
     } else {
         error.innerHTML = ""
@@ -51,12 +52,10 @@ function validarNombre(value,error) {
 function cargarDatos() {
     console.log("Cargando datos...")
     let mapPersonas = personas.map((persona, index) => {
-        return `<tr>
-                    <td>${index + 1}</td>
-                    <td>${persona.nombre}</td>
-                    <td>${persona.edad}</td>
-                    <td><button onclick="eliminar(${index})">Eliminar</button></td>
-                </tr>`;
+        return "<tr><td>" +persona.nombre+
+        "</td><td>" +persona.edad+
+        "</td><td><button class='btn btn-danger' onclick='eliminar("+index +")'>Eliminar</button>"+
+        "<button class='btn btn-primary' onclick='actualizarMiFormulario("+index+")'>Actualizar</button></td></tr>";
     });
     let cuerpoTabla = document.getElementById('cuerpoTabla');
     let strcuerpoTabla = mapPersonas.join('');
