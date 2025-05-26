@@ -23,7 +23,7 @@ function validarFormulario() {
         }
         let personas = personas.push(persona)
         
-        return
+        return true
     }
 
 }
@@ -31,8 +31,8 @@ function validarFormulario() {
 console.log(persona)
 mostrarDatos()
 
-function validarNombre() {
-
+function validarNombre(element,value,error) {
+    
 }
 
 
@@ -50,7 +50,7 @@ function mostrarDatos() {
 //validar edad: Debe ser mayor o igual a 18 y menor a 100
 
 
-function validarEdad() {
+function validarEdad(vEdad) {
     if (vEdad === '') {
         alert("Por favor ingresar edad valida")
         return
