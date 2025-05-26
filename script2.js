@@ -22,8 +22,11 @@ function validarFormulario() {
             edad: vEdad
         }
         personas.push(persona)
+        console.log(personas)
+        eNombre.value = ''
+        eEdad.value = ''
+        cargarDatos()
         
-        return true
     }
 
 }
