@@ -31,7 +31,17 @@ function validarFormulario() {
 console.log(persona)
 mostrarDatos()
 
-function validarNombre(element,value,error) {
+function validarNombre(element,value,error) {   
+    if (value === '') {
+        error.innerHTML = "Por favor ingresar un nombre valido"
+        return false
+    } else if (!/^[a-zA-Z\s]+$/.test(value)) {
+        error.innerHTML = "El nombre solo debe contener letras"
+        return false
+    } else {
+        error.innerHTML = ""
+        return true
+    }
     
 }
 
