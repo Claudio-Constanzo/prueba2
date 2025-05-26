@@ -7,21 +7,21 @@ let vEdad = eEdad.value
 let errorNombre = document.getElementById('errorNombre')
 let errorEdad = document.getElementById('errorEdad')
 
-function validarFormulario() {
+function validarFormulario() {  
     let eNombre = document.getElementById('nombre')
     let eEdad = document.getElementById('edad')
     let vNombre = eNombre.value
     let vEdad = eEdad.value
     let errorNombre = document.getElementById('errorNombre')
     let errorEdad = document.getElementById('errorEdad')
-    let fNombre = validarNombre(eNombre, vNombre, errorNombre)
-    let fEdad = validarEdad(eEdad, vEdad, errorEdad)
+    let fNombre = validarNombre(vNombre, errorNombre)
+    let fEdad = validarEdad(vEdad)
     if (fNombre && fEdad) {
         let persona = {
             nombre: vNombre,
             edad: vEdad
         }
-        let personas = personas.push(persona)
+        personas.push(persona)
         
         return true
     }
@@ -31,7 +31,7 @@ function validarFormulario() {
 console.log(persona)
 mostrarDatos()
 
-function validarNombre(element,value,error) {   
+function validarNombre(value,error) {   
     if (value === '') {
         error.innerHTML = "Por favor ingresar un nombre valido"
         return false
@@ -46,7 +46,7 @@ function validarNombre(element,value,error) {
 }
 
 
-function actualizarMiFormulario() {
+function actualizarMiFormulario() { 
 
 }
 
