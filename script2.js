@@ -16,14 +16,10 @@ function validar(){
         edad: vEdad
         }
         let personas = personas.push(persona)
-    }
-    
-    /*if (nombre === ""){
-        alert("No dejar campo vacio.")
+        console.log(persona)
         return 
-    }*/
-
-    if 
+    }
+      
 }
 
 
