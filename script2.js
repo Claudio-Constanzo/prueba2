@@ -1,5 +1,5 @@
 //validar nombre, debe contener solo letras y no ser vacio
-personas = []
+let personas = []
 let eNombre = document.getElementById('nombre')
 let eEdad = document.getElementById('edad')
 let vNombre = eNombre.value
@@ -15,7 +15,7 @@ function validarFormulario() {
     let errorNombre = document.getElementById('errorNombre')
     let errorEdad = document.getElementById('errorEdad')
     let fNombre = validarNombre(vNombre, errorNombre)
-    let fEdad = validarEdad(vEdad)
+    let fEdad = validarEdad(vEdad,errorEdad)
     if (fNombre && fEdad) {
         let persona = {
             nombre: vNombre,
