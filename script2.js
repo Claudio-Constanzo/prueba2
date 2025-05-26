@@ -9,8 +9,14 @@ function validar(){
     let errorNombre = document.getElementById('errorNombre')
     let errorEdad = document.getElementById('errorEdad')
     let fNombre = validarNombre(eNombre,vNombre,errorNombre)
-    let fEdad = validarEdad(eEdad,vEdad,err)
-    let 
+    let fEdad = validarEdad(eEdad,vEdad,errorEdad)
+    if (fNombre && fEdad){
+        let persona ={
+        nombre: vNombre,
+        edad: vEdad
+        }
+        let personas = personas.push(persona)
+    }
     
     /*if (nombre === ""){
         alert("No dejar campo vacio.")
