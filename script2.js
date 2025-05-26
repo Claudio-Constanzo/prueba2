@@ -7,7 +7,7 @@ let vEdad = eEdad.value
 let errorNombre = document.getElementById('errorNombre')
 let errorEdad = document.getElementById('errorEdad')
 
-function validarFormulario() {  
+function validar() {  
     let eNombre = document.getElementById('nombre')
     let eEdad = document.getElementById('edad')
     let vNombre = eNombre.value
@@ -48,8 +48,30 @@ function validarNombre(value,error) {
     
 }
 
+function cargarDatos() {
+    console.log("Cargando datos...")
+    let mapPersonas = personas.map((persona, index) => {
+        return `<tr>
+                    <td>${index + 1}</td>
+                    <td>${persona.nombre}</td>
+                    <td>${persona.edad}</td>
+                    <td><button onclick="eliminar(${index})">Eliminar</button></td>
+                </tr>`;
+    });
+    let cuerpoTabla = document.getElementById('cuerpoTabla');
+    let strcuerpoTabla = mapPersonas.join('');
+    cuerpoTabla.innerHTML = strcuerpoTabla;
+    console.log("Datos cargados correctamente");
+}
 
 function actualizarMiFormulario() { 
+    let eNombre = document.getElementById('nombre')
+    let eEdad = document.getElementById('edad')
+    eNombre.value = ''
+    eEdad.value = ''
+    errorNombre.innerHTML = ''
+    errorEdad.innerHTML = ''
+    console.log("Formulario actualizado")
 
 }
 
@@ -57,22 +79,23 @@ function eliminar() {
 
 }
 
-function mostrarDatos() {
 
-}
 //validar edad: Debe ser mayor o igual a 18 y menor a 100
 
 
 function validarEdad(vEdad) {
     if (vEdad === '') {
         alert("Por favor ingresar edad valida")
-        return
+        return false
     } if (vEdad < 0) {
         alert("Edad invalida")
-        return
+        return false
     } if (vEdad > 120){
         alert("Edad fuera de rango")
-        return
-    } else{console.log("Exito!")}
+        return false
+    } else{console.log("Exito!")
+        return true 
+        
+    }
 
 }
