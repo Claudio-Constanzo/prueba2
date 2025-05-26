@@ -1,7 +1,13 @@
 //validar nombre, debe contener solo letras y no ser vacio
 personas = []
+let eNombre = document.getElementById('nombre')
+let eEdad = document.getElementById('edad')
+let vNombre = eNombre.value
+let vEdad = eEdad.value
+let errorNombre = document.getElementById('errorNombre')
+let errorEdad = document.getElementById('errorEdad')
 
-function validar(){
+function validarFormulario(){
     let eNombre = document.getElementById('nombre')
     let eEdad = document.getElementById('edad')
     let vNombre = eNombre.value
@@ -22,5 +28,22 @@ function validar(){
       
 }
 
+function validarNombre(){
 
+}
+
+
+function actualizarMiFormulario(){
+
+}
+
+function eliminar(){
+
+}
 //validar edad: Debe ser mayor o igual a 18 y menor a 100
+
+
+function validarEdad(){
+
+
+}
