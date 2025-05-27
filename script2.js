@@ -65,7 +65,11 @@ function cargarDatos() {
 
 function eliminar(indice) {
     personas = personas.filter((persona, index) => {
-        if (indice != index) {
+        if (confirm("¿Está seguro que desea eliminar esta persona?")) {
+            if (indice != index) {
+            return persona
+            }
+        } else {
             return persona
         }
     })
@@ -105,8 +109,7 @@ function actualizar(){
             }
         }else{
             return persona
-        }
-        
+        }  
     })
     cargarDatos();
 }
