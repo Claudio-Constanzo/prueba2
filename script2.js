@@ -2,8 +2,6 @@
 let personas = []
 let eNombre = document.getElementById('nombre')
 let eEdad = document.getElementById('edad')
-let vNombre = eNombre.value
-let vEdad = eEdad.value
 let errorNombre = document.getElementById('errorNombre')
 let errorEdad = document.getElementById('errorEdad')
 
@@ -27,12 +25,14 @@ function validar() {
         eEdad.value = ''
         cargarDatos()
         
+    }else {
+        console.log("Error al validar los datos")
     }
 
 }
 
-console.log(persona)
-mostrarDatos()
+console.log(personas)
+cargarDatos();
 
 function validarNombre(value,error) {   
     if (value === '') {
@@ -59,39 +59,32 @@ function cargarDatos() {
     });
     let cuerpoTabla = document.getElementById('cuerpoTabla');
     let strcuerpoTabla = mapPersonas.join('');
-    cuerpoTabla.innerHTML = strcuerpoTabla;
-    console.log("Datos cargados correctamente");
+    if (cuerpoTabla) {
+        cuerpoTabla.innerHTML = strcuerpoTabla;
+        console.log("Datos cargados correctamente");
+}
 }
 
 function eliminar(indice) {
-    personas = personas.filter((persona, index) => {
-        if (confirm("¿Está seguro que desea eliminar esta persona?")) {
-            if (indice != index) {
-            return persona
-            }
-        } else {
-            return persona
-        }
-    })
-    cargarDatos();
-    console.log("Eliminando persona en el indice: " + indice);
-    alert("Persona eliminada correctamente")
+    if (confirm("¿Está seguro que desea eliminar esta persona?")) {
+        personas = personas.filter((persona, index) => indice != index);
+        cargarDatos();
+        console.log("Eliminando persona en el indice: " + indice);
+        alert("Persona eliminada correctamente");
+    }
 }
 
 
 function actualizarMiFormulario(indice) { 
-    let eNombre = document.getElementById('nombre')
-    let eEdad = document.getElementById('edad')
-    let persona = personas.filter((persona,index) => {
-        if(indice == index) {
-            return persona
-        }
-})
-    console.log(persona)
-    eNombre.value = persona[0].nombre
-    eEdad.value = persona[0].edad
-    let btnActualizar = document.getElementById('btnActualizar')
-    btnActualizar.value = indice
+    indice = parseInt(indice, 10);
+    let eNombre = document.getElementById('nombre');
+    let eEdad = document.getElementById('edad');
+    if (personas[indice]) {
+        eNombre.value = personas[indice].nombre;
+        eEdad.value = personas[indice].edad;
+    }
+    let btnActualizar = document.getElementById('btnActualizar');
+    btnActualizar.value = indice;
 }
 
 function actualizar(){
@@ -109,8 +102,11 @@ function actualizar(){
             }
         }else{
             return persona
-        }  
+        }
+        
     })
+    console.log("Actualizando persona en el indice: " + indice);
+    alert("Persona actualizada correctamente");
     cargarDatos();
 }
 
@@ -123,7 +119,7 @@ function validarEdad(vEdad) {
     if (vEdad === '') {
         alert("Por favor ingresar edad valida")
         return false
-    } if (vEdad > 17) {
+    } if (vEdad <= 17) {
         alert("Ingresar edad mayor o igual a 18")
         return 
     } if (vEdad > 100){
