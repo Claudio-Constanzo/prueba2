@@ -63,6 +63,18 @@ function cargarDatos() {
     console.log("Datos cargados correctamente");
 }
 
+function eliminar(indice) {
+    personas = personas.filter((persona, index) => {
+        if (indice != index) {
+            return persona
+        }
+    })
+    cargarDatos();
+    console.log("Eliminando persona en el indice: " + indice);
+    alert("Persona eliminada correctamente")
+}
+
+
 function actualizarMiFormulario(indice) { 
     let eNombre = document.getElementById('nombre')
     let eEdad = document.getElementById('edad')
@@ -78,9 +90,27 @@ function actualizarMiFormulario(indice) {
     btnActualizar.value = indice
 }
 
-function eliminar() {
-
+function actualizar(){
+    let eNombre = document.getElementById('nombre')
+    let eEdad = document.getElementById('edad')
+    let vNombre = eNombre.value
+    let vEdad = eEdad.value
+    let btnActualizar = document.getElementById('btnActualizar')
+    let indice = btnActualizar.value
+    personas = personas.map((persona, index) => {
+        if (indice == index) {
+            return{
+                nombre: vNombre,
+                edad: vEdad
+            }
+        }else{
+            return persona
+        }
+        
+    })
+    cargarDatos();
 }
+
 
 
 //validar edad: Debe ser mayor o igual a 18 y menor a 100
@@ -90,10 +120,10 @@ function validarEdad(vEdad) {
     if (vEdad === '') {
         alert("Por favor ingresar edad valida")
         return false
-    } if (vEdad < 0) {
-        alert("Edad invalida")
-        return false
-    } if (vEdad > 120){
+    } if (vEdad > 17) {
+        alert("Ingresar edad mayor o igual a 18")
+        return 
+    } if (vEdad > 100){
         alert("Edad fuera de rango")
         return false
     } else{console.log("Exito!")
